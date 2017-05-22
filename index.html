@@ -61,6 +61,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-乐观锁和悲观锁" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/22/乐观锁和悲观锁/" class="article-date">
+  <time datetime="2017-05-22T08:59:14.000Z" itemprop="datePublished">2017-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/乐观锁和悲观锁/">乐观锁和悲观锁</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>    数据库的并发操作会使用到乐观锁和悲观锁
+    乐观锁顾名思义就是乐观的，认为每次获取数据不会对数据进行修改，但是数据更新时   
+候会进行版本校验，乐观锁是应用层次的设计，例如hibernate的乐观锁设计。
+    悲观锁顾名思义就是悲观的，认为每次获取数据都会对数据进行修改，所以每次拿数   
+据的时候就会惊醒加锁，别人想要获取就需要等锁释放才能获取到。悲观锁是数据库层  
+次的设计，例如 for update 语句。
+</code></pre><h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><pre><code>    两个用户同时查询，初始version是0
+    select * from table;
+    一个用户更新会将version更新加一
+    update  table set version =version+1,name =&apos;name&apos; where id =1 and version =0;
+    这个时候另外一个用户更新但是已经更新不到了,因为version已经变为1，所以就会更   
+新失败。这个就是乐观锁的机制。
+</code></pre><h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><pre><code>  悲观锁都是数据库层次的设计，最常见的就是行锁，例如for update 语句。
+  两个用户同时查询，用户一执行以下sql
+  select * from table for update ;
+  然后用户二执行相同的sql就会卡住，只有用户一提交才会执行。
+  但是用户二这个时候执行
+  select * from table 
+  是可以查询出结果的。
+  悲观锁基本可以理解为并发的更新操作只会顺序执行。只有一个更新事务提交，另外一   
+个更新更新才会执行，否则一直等待。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/22/乐观锁和悲观锁/" data-id="cj2zwj0he0004pznfi4dj5pdh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-数据库/">java,数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Spring-IOC初学" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/17/Spring-IOC初学/" class="article-date">
@@ -92,47 +151,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/17/Spring-IOC初学/" data-id="cj2stdmog00007inf2g21ihvr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/17/Spring-IOC初学/" data-id="cj2zwj0gt0000pznfe43kum1k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-Spring/">JAVA,Spring</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-乐观锁和悲观锁" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/17/乐观锁和悲观锁/" class="article-date">
-  <time datetime="2017-05-17T03:25:03.000Z" itemprop="datePublished">2017-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/乐观锁和悲观锁/">乐观锁和悲观锁</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/17/乐观锁和悲观锁/" data-id="cj2stdmoy00047infallq9uw7" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -167,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/08/linux如何使用hexo搭建blog/" data-id="cj2stdmow00037infz95y381m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/08/linux如何使用hexo搭建blog/" data-id="cj2zwj0h80003pznf7n5yxatc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/08/hello-world/" data-id="cj2stdmoo00017infwtqs8e46" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/08/hello-world/" data-id="cj2zwj0h20001pznf59os4j4p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +257,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA-Spring/">JAVA,Spring</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA-Spring/">JAVA,Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-数据库/">java,数据库</a></li></ul>
     </div>
   </div>
 
@@ -244,7 +267,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JAVA-Spring/" style="font-size: 10px;">JAVA,Spring</a>
+      <a href="/tags/JAVA-Spring/" style="font-size: 10px;">JAVA,Spring</a> <a href="/tags/java-数据库/" style="font-size: 10px;">java,数据库</a>
     </div>
   </div>
 
@@ -266,11 +289,11 @@
       <ul>
         
           <li>
-            <a href="/2017/05/17/Spring-IOC初学/">Spring IOC初学</a>
+            <a href="/2017/05/22/乐观锁和悲观锁/">乐观锁和悲观锁</a>
           </li>
         
           <li>
-            <a href="/2017/05/17/乐观锁和悲观锁/">乐观锁和悲观锁</a>
+            <a href="/2017/05/17/Spring-IOC初学/">Spring IOC初学</a>
           </li>
         
           <li>
